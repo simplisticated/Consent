@@ -15,7 +15,7 @@ class RequestManager internal constructor(
         return this
     }
 
-    private fun request() {
+    internal fun start() {
         TODO("Request")
     }
 }

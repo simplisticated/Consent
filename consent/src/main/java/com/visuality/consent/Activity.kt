@@ -9,5 +9,7 @@ fun Activity.getConsent(
         permissions,
         this,
         null
-    )
+    ).also { requestManager ->
+        requestManager.start()
+    }
 }
