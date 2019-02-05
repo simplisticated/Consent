@@ -3,8 +3,6 @@ package com.visuality.consent.check
 import android.app.Activity
 import android.content.pm.PackageManager
 
-typealias OnCheckOperationFinishedCallback = (result: CheckResult) -> Unit
-
 class CheckOperation internal constructor(
     private val permissions: Array<out String>,
     private val activity: Activity,
