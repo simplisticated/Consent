@@ -86,7 +86,7 @@ override fun onRequestPermissionsResult(
     permissions: Array<out String>,
     grantResults: IntArray
 ) {
-    this.handleConsent(
+    handleConsent(
         requestCode,
         permissions,
         grantResults
