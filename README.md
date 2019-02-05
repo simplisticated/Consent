@@ -2,8 +2,8 @@
 	<a href="https://http://www.android.com">
 		<img src="https://img.shields.io/badge/android-23-green.svg?style=flat">
 	</a>
-	<a href="https://jitpack.io/igormatyushkin014/Consent">
-		<img src="https://jitpack.io/v/#igormatyushkin014/Consent.svg">
+	<a href="https://jitpack.io/#igormatyushkin014/Consent">
+		<img src="https://jitpack.io/v/igormatyushkin014/Consent.svg">
 	</a>
 	<a href="https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)">
 		<img src="https://img.shields.io/badge/License-Apache 2.0-blue.svg?style=flat">
