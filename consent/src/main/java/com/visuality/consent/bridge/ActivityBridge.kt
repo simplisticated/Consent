@@ -3,7 +3,6 @@ package com.visuality.consent.bridge
 import android.app.Activity
 import android.content.pm.PackageManager
 import com.visuality.consent.check.CheckOperation
-import com.visuality.consent.request.OnRequestOperationFinishedCallback
 import com.visuality.consent.request.RequestHolder
 import com.visuality.consent.request.RequestOperation
 import com.visuality.consent.request.RequestResult
