@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.visuality.consent.bridge.getConsent
+import com.visuality.consent.bridge.handleConsent
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,12 +19,24 @@ class MainActivity : AppCompatActivity() {
         this.initializeRequestButton()
     }
 
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        this.handleConsent(
+            requestCode,
+            permissions,
+            grantResults
+        )
+    }
+
     private fun initializeRequestButton() {
         this.requestButton.setOnClickListener {
             this.getConsent(
                 Manifest.permission.CAMERA,
-                Manifest.permission.CALL_PHONE
-            ).onFinished {
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ).whenFinished {
             }
         }
     }
