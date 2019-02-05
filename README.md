@@ -12,7 +12,7 @@
 
 ## At a Glance
 
-`Consent` is a set of tools for making permissions management in Android significantly easier.
+`Consent` is a library that makes permissions management in Android significantly easier.
 
 ## How to Get Started
 
@@ -43,7 +43,58 @@ dependencies {
 
 ## Usage
 
-Documentation and code examples will be uploaded soon.
+The main idea of `Consent` library is to keep all things as simple as possible. That's why all methods are available from the activity.
+
+### Check Permissions
+
+```kotlin
+checkConsent(
+    Manifest.permission.CAMERA,
+    Manifest.permission.WRITE_EXTERNAL_STORAGE
+).whenFinished { result ->
+    if (result.hasBlocked) {
+        /*
+         * Some permissions are blocked.
+         * Let's learn how to retrieve them.
+         */
+        result.blocked // Contains blocked permissions
+        result.allowed // Contains available permissions
+    } else {
+        // All permissions are available
+    }
+}
+```
+
+### Request Permissions
+
+The same as previous example but replace `checkConsent` with `getConsent`:
+
+```kotlin
+getConsent(
+    Manifest.permission.CAMERA,
+    Manifest.permission.WRITE_EXTERNAL_STORAGE
+).whenFinished { result ->
+    // Handle the result
+}
+```
+
+Also, you have to override activity's `onRequestPermissionsResult()` method:
+
+```kotlin
+override fun onRequestPermissionsResult(
+    requestCode: Int,
+    permissions: Array<out String>,
+    grantResults: IntArray
+) {
+    this.handleConsent(
+        requestCode,
+        permissions,
+        grantResults
+    )
+}
+```
+
+Now, you're all set 🎉🎉🎉
 
 ## License
 
