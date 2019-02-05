@@ -40,12 +40,13 @@ fun Activity.handleConsent(
     permissions: Array<out String>,
     results: IntArray
 ): Boolean {
-    val requestOperation = RequestHolder.currentRequestOperation ?: return false
-    val callback = requestOperation.onFinishedCallback ?: return false
-
     if (requestCode != RequestOperation.REQUEST_CODE) {
         return false
     }
+
+    val requestOperation = RequestHolder.currentRequestOperation ?: return false
+    val callback = requestOperation.onFinishedCallback ?: return false
+    RequestHolder.currentRequestOperation = null
 
     val allowedPermissions = arrayListOf<String>()
     var blockedPermissions = arrayListOf<String>()
@@ -72,8 +73,6 @@ fun Activity.handleConsent(
         blockedPermissions.toTypedArray()
     )
     callback(requestResult)
-
-    RequestHolder.currentRequestOperation = null
     return true
 }
 
