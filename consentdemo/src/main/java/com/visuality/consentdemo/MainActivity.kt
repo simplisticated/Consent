@@ -3,7 +3,7 @@ package com.visuality.consentdemo
 import android.Manifest
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.visuality.consent.getConsent
+import com.visuality.consent.bridge.getConsent
 
 class MainActivity : AppCompatActivity() {
 
