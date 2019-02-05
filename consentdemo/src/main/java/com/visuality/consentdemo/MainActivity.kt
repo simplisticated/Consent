@@ -36,7 +36,12 @@ class MainActivity : AppCompatActivity() {
             this.getConsent(
                 Manifest.permission.CAMERA,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE
-            ).whenFinished {
+            ).whenFinished { requestResult ->
+                if (requestResult.hasBlocked) {
+                    // Some permissions are blocked
+                } else {
+                    // All permissions are available
+                }
             }
         }
     }
