@@ -9,12 +9,14 @@ class CheckOperation internal constructor(
     private var onFinishedCallback: OnCheckOperationFinishedCallback? = null
 ) {
 
-    fun onResult(callback: OnCheckOperationFinishedCallback): CheckOperation {
+    fun whenFinished(callback: OnCheckOperationFinishedCallback): CheckOperation {
         this.onFinishedCallback = callback
         return this
     }
 
     internal fun start() {
+        val callback = this.onFinishedCallback ?: return
+
         val allowedPermissions = arrayListOf<String>()
         val blockedPermissions = arrayListOf<String>()
 
@@ -29,12 +31,10 @@ class CheckOperation internal constructor(
             }
         }
 
-        this.onFinishedCallback?.let { callback ->
-            val checkResult = CheckResult(
-                allowedPermissions.toTypedArray(),
-                blockedPermissions.toTypedArray()
-            )
-            callback(checkResult)
-        }
+        val checkResult = CheckResult(
+            allowedPermissions.toTypedArray(),
+            blockedPermissions.toTypedArray()
+        )
+        callback(checkResult)
     }
 }
