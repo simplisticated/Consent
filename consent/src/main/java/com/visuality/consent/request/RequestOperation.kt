@@ -2,8 +2,6 @@ package com.visuality.consent.request
 
 import android.content.Context
 
-typealias OnRequestOperationFinishedCallback = (result: RequestResult) -> Unit
-
 class RequestOperation internal constructor(
     private val permissions: Array<out String>,
     private val context: Context,
