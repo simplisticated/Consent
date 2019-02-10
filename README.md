@@ -35,7 +35,7 @@ Then add `Consent` to dependencies list:
 
 ```javascript
 dependencies {
-    implementation 'com.github.igormatyushkin014:Consent:<LATEST_VERSION_ON_JITPACK>'
+    implementation 'com.github.igormatyushkin014:Consent:1.0'
 }
 ```
 
