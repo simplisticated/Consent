@@ -1,8 +1,10 @@
 package com.visuality.consent.check
 
+import com.visuality.consent.types.Permission
+
 data class CheckResult internal constructor(
-    val allowed: Array<out String>,
-    val blocked: Array<out String>
+    val allowed: Array<Permission>,
+    val blocked: Array<Permission>
 ) {
 
     val hasBlocked: Boolean
