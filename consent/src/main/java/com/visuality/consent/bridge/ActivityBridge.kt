@@ -6,14 +6,31 @@ import com.visuality.consent.request.RequestHolder
 import com.visuality.consent.request.RequestOperation
 import com.visuality.consent.request.RequestResult
 import com.visuality.consent.types.Permission
-import com.visuality.consent.types.permissionByNativeName
+import com.visuality.consent.types.permissionByIdentifier
 import kotlin.math.min
+
+fun Activity.getConsent(
+    vararg permissions: String
+): RequestOperation {
+    val requestOperation = RequestOperation(
+        permissions,
+        this,
+        null
+    ).also { operation ->
+        operation.start()
+    }
+    RequestHolder.currentRequestOperation = requestOperation
+    return requestOperation
+}
 
 fun Activity.getConsent(
     vararg permissions: Permission
 ): RequestOperation {
+    val stringPermissions = permissions
+        .map { it.identifier }
+        .toTypedArray()
     val requestOperation = RequestOperation(
-        permissions,
+        stringPermissions,
         this,
         null
     ).also { operation ->
@@ -45,7 +62,7 @@ fun Activity.handleConsent(
     ) - 1
 
     for (i in 0..endIndex) {
-        val permission = permissionByNativeName(
+        val permission = permissionByIdentifier(
             permissions[i]
         ) ?: continue
         val result = results[i]

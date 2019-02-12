@@ -3,9 +3,10 @@ package com.visuality.consent.check
 import android.content.Context
 import android.content.pm.PackageManager
 import com.visuality.consent.types.Permission
+import com.visuality.consent.types.permissionByIdentifier
 
 class CheckOperation internal constructor(
-    private val permissions: Array<out Permission>,
+    private val permissions: Array<out String>,
     private val context: Context,
     private var onFinishedCallback: OnCheckOperationFinishedCallback? = null
 ) {
@@ -22,8 +23,11 @@ class CheckOperation internal constructor(
         val allowedPermissions = arrayListOf<Permission>()
         val blockedPermissions = arrayListOf<Permission>()
 
-        for (permission in this.permissions) {
-            val checkResult = this.context.checkSelfPermission(permission.identifier)
+        for (permissionIdentifier in this.permissions) {
+            val permission = permissionByIdentifier(
+                permissionIdentifier
+            ) ?: continue
+            val checkResult = this.context.checkSelfPermission(permissionIdentifier)
             val permissionAllowed = checkResult == PackageManager.PERMISSION_GRANTED
 
             if (permissionAllowed) {

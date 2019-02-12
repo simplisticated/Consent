@@ -335,6 +335,6 @@ enum class Permission(
     WRITE_VOICEMAIL(Manifest.permission.WRITE_VOICEMAIL)
 }
 
-internal fun permissionByNativeName(name: String): Permission? = Permission.values()
+internal fun permissionByIdentifier(name: String): Permission? = Permission.values()
     .filter { it.identifier == name }
     .firstOrNull()
