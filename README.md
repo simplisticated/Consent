@@ -47,7 +47,16 @@ dependencies {
 
 ## Usage
 
-The main idea of `Consent` library is to keep all things as simple as possible. That's why all methods are available from the activity.
+The main idea of `Consent` library is to keep all things as simple as possible. That's why all methods are available directly from `Activity` and `Context` instances.
+
+You can use string permissions from `Manifest.permission` collection or special `Permission` type. Example:
+
+```kotlin
+val stringPermission = Manifest.permission.CAMERA
+val permission = Permission.CAMERA
+```
+
+All public methods in the library give you a freedom to choose whether you want to use string values or built-in permissions. The `Permission` class gives you a little more flexibility, but you always can decide whether you need it.
 
 ### Check Permissions
 
@@ -55,8 +64,8 @@ Lambda syntax:
 
 ```kotlin
 checkConsent(
-    Manifest.permission.CAMERA,
-    Manifest.permission.WRITE_EXTERNAL_STORAGE
+    Permission.CAMERA,
+    Permission.WRITE_EXTERNAL_STORAGE
 ).whenFinished { result ->
     if (result.hasBlocked) {
         /*
@@ -75,8 +84,8 @@ Regular syntax:
 
 ```kotlin
 val result = checkConsent(
-    Manifest.permission.CAMERA,
-    Manifest.permission.WRITE_EXTERNAL_STORAGE
+    Permission.CAMERA,
+    Permission.WRITE_EXTERNAL_STORAGE
 ).result
 
 if (result.hasBlocked) {
@@ -109,8 +118,8 @@ The same as previous example but replace `checkConsent` with `getConsent`:
 
 ```kotlin
 getConsent(
-    Manifest.permission.CAMERA,
-    Manifest.permission.WRITE_EXTERNAL_STORAGE
+    Permission.CAMERA,
+    Permission.WRITE_EXTERNAL_STORAGE
 ).whenFinished { result ->
     // Handle the result
 }
