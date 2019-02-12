@@ -143,6 +143,36 @@ override fun onRequestPermissionsResult(
 
 Now, you're all set 🎉🎉🎉
 
+### Syntactic sugar
+
+Since version `1.2` you can also check permissions directly from `Permission` objects:
+
+```kotlin
+val result = Permission.CAMERA.checkConsent(
+    this
+).result
+```
+
+Also, with array:
+
+```kotlin
+val result = arrayOf(
+    Permission.CAMERA,
+    Permission.WRITE_EXTERNAL_STORAGE
+).checkConsent(this).result
+```
+
+Lambda version:
+
+```kotlin
+arrayOf(
+    Permission.CAMERA,
+    Permission.WRITE_EXTERNAL_STORAGE
+).checkConsent(this).whenFinished { result ->
+    // Handle result
+}
+```
+
 ## License
 
 `Consent` is available under the Apache 2.0 license. See the [LICENSE](./LICENSE) file for more info.
