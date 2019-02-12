@@ -101,7 +101,7 @@ if (allowedAccess) {
 }
 ```
 
-Both syntaxes work the same way. That's up to you which one to use 😉
+Both syntaxes are equivalent to each other and interchangeable. In other words, both of them return the same result. That's up to you which one to use.
 
 ### Request Permissions
 
