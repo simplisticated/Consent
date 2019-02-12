@@ -173,7 +173,7 @@ arrayOf(
 }
 ```
 
-Similar functionality is available for consent request:
+You can also request for single permission in similar way:
 
 ```kotlin
 // Request single permission
@@ -183,9 +183,11 @@ Permission.CAMERA.getConsent(
 ).whenFinished { result ->
     // Handle result
 }
+```
 
-// Request multiple permissions
+Request for multiple permissions:
 
+```kotlin
 arrayOf(
     Permission.CAMERA,
     Permission.WRITE_EXTERNAL_STORAGE
