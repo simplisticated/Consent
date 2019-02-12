@@ -5,7 +5,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 
 enum class Permission(
-    identifier: String
+    val identifier: String
 ) {
 
     @RequiresApi(Build.VERSION_CODES.P)
@@ -334,3 +334,7 @@ enum class Permission(
 
     WRITE_VOICEMAIL(Manifest.permission.WRITE_VOICEMAIL)
 }
+
+internal fun permissionByNativeName(name: String): Permission? = Permission.values()
+    .filter { it.identifier == name }
+    .firstOrNull()
