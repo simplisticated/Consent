@@ -51,6 +51,8 @@ The main idea of `Consent` library is to keep all things as simple as possible. 
 
 ### Check Permissions
 
+Lambda syntax:
+
 ```kotlin
 checkConsent(
     Manifest.permission.CAMERA,
@@ -68,6 +70,38 @@ checkConsent(
     }
 }
 ```
+
+Regular syntax:
+
+```kotlin
+val result = checkConsent(
+    Manifest.permission.CAMERA,
+    Manifest.permission.WRITE_EXTERNAL_STORAGE
+).result
+
+if (result.hasBlocked) {
+    // Handle blocked permissions
+} else {
+    // All permissions are available
+}
+```
+
+Another example of regular syntax:
+
+```kotlin
+val allowedAccess = !checkConsent(
+    Manifest.permission.CAMERA,
+    Manifest.permission.WRITE_EXTERNAL_STORAGE
+).result.hasBlocked
+
+if (allowedAccess) {
+    // All permissions are available
+} else {
+    // Show warning to user
+}
+```
+
+Both syntaxes work the same way. That's up to you which one to use 😉
 
 ### Request Permissions
 
