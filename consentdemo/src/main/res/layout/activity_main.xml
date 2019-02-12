@@ -7,15 +7,28 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/request_button"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:text="Request permissions"
-        />
+        android:gravity="center_horizontal">
+        <Button
+            android:id="@+id/check_permissions_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Check permissions"
+            />
+        <Button
+            android:id="@+id/request_permissions_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Request permissions"
+            />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
