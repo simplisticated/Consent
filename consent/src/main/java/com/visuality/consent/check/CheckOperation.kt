@@ -9,6 +9,9 @@ class CheckOperation internal constructor(
     private var onFinishedCallback: OnCheckOperationFinishedCallback? = null
 ) {
 
+    var result = CheckResult.empty()
+        private set
+
     fun whenFinished(callback: OnCheckOperationFinishedCallback): CheckOperation {
         this.onFinishedCallback = callback
         return this
@@ -31,10 +34,10 @@ class CheckOperation internal constructor(
             }
         }
 
-        val checkResult = CheckResult(
+        this.result = CheckResult(
             allowedPermissions.toTypedArray(),
             blockedPermissions.toTypedArray()
         )
-        callback(checkResult)
+        callback(this.result)
     }
 }
