@@ -1,11 +1,11 @@
 package com.visuality.consent.check
 
-import android.app.Activity
+import android.content.Context
 import android.content.pm.PackageManager
 
 class CheckOperation internal constructor(
     private val permissions: Array<out String>,
-    private val activity: Activity,
+    private val context: Context,
     private var onFinishedCallback: OnCheckOperationFinishedCallback? = null
 ) {
 
@@ -21,7 +21,7 @@ class CheckOperation internal constructor(
         val blockedPermissions = arrayListOf<String>()
 
         for (permission in this.permissions) {
-            val checkResult = this.activity.checkSelfPermission(permission)
+            val checkResult = this.context.checkSelfPermission(permission)
             val permissionAllowed = checkResult == PackageManager.PERMISSION_GRANTED
 
             if (permissionAllowed) {

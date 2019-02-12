@@ -8,18 +8,6 @@ import com.visuality.consent.request.RequestOperation
 import com.visuality.consent.request.RequestResult
 import kotlin.math.min
 
-fun Activity.checkConsent(
-    vararg permissions: String
-): CheckOperation {
-    return CheckOperation(
-        permissions,
-        this,
-        null
-    ).also { operation ->
-        operation.start()
-    }
-}
-
 fun Activity.getConsent(
     vararg permissions: String
 ): RequestOperation {
