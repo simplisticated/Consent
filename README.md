@@ -145,7 +145,7 @@ Now, you're all set 🎉🎉🎉
 
 ### Syntactic sugar
 
-Since version `1.2` you can also check permissions directly from `Permission` objects:
+Since version `1.2` you can also check permissions directly from `Permission` object:
 
 ```kotlin
 val result = Permission.CAMERA.checkConsent(
@@ -153,7 +153,7 @@ val result = Permission.CAMERA.checkConsent(
 ).result
 ```
 
-Also, with array:
+Also, from array:
 
 ```kotlin
 val result = arrayOf(
@@ -169,6 +169,27 @@ arrayOf(
     Permission.CAMERA,
     Permission.WRITE_EXTERNAL_STORAGE
 ).checkConsent(this).whenFinished { result ->
+    // Handle result
+}
+```
+
+Similar functionality is available for consent request:
+
+```kotlin
+// Request single permission
+
+Permission.CAMERA.getConsent(
+    this
+).whenFinished { result ->
+    // Handle result
+}
+
+// Request multiple permissions
+
+arrayOf(
+    Permission.CAMERA,
+    Permission.WRITE_EXTERNAL_STORAGE
+).getConsent(this).whenFinished { result ->
     // Handle result
 }
 ```
