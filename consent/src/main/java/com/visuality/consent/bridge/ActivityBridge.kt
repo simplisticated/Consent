@@ -2,14 +2,15 @@ package com.visuality.consent.bridge
 
 import android.app.Activity
 import android.content.pm.PackageManager
-import com.visuality.consent.check.CheckOperation
 import com.visuality.consent.request.RequestHolder
 import com.visuality.consent.request.RequestOperation
 import com.visuality.consent.request.RequestResult
+import com.visuality.consent.types.Permission
+import com.visuality.consent.types.permissionByNativeName
 import kotlin.math.min
 
 fun Activity.getConsent(
-    vararg permissions: String
+    vararg permissions: Permission
 ): RequestOperation {
     val requestOperation = RequestOperation(
         permissions,
@@ -35,8 +36,8 @@ fun Activity.handleConsent(
     val callback = requestOperation.onFinishedCallback ?: return false
     RequestHolder.currentRequestOperation = null
 
-    val allowedPermissions = arrayListOf<String>()
-    var blockedPermissions = arrayListOf<String>()
+    val allowedPermissions = arrayListOf<Permission>()
+    val blockedPermissions = arrayListOf<Permission>()
 
     val endIndex = min(
         permissions.size,
@@ -44,7 +45,9 @@ fun Activity.handleConsent(
     ) - 1
 
     for (i in 0..endIndex) {
-        val permission = permissions[i]
+        val permission = permissionByNativeName(
+            permissions[i]
+        ) ?: continue
         val result = results[i]
         val permissionAllowed = result == PackageManager.PERMISSION_GRANTED
 

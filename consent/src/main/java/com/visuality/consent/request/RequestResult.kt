@@ -1,8 +1,10 @@
 package com.visuality.consent.request
 
+import com.visuality.consent.types.Permission
+
 data class RequestResult(
-    val allowed: Array<out String>,
-    val blocked: Array<out String>
+    val allowed: Array<Permission>,
+    val blocked: Array<Permission>
 ) {
 
     val hasBlocked: Boolean

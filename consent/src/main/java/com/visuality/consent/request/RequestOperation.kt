@@ -1,9 +1,10 @@
 package com.visuality.consent.request
 
 import android.app.Activity
+import com.visuality.consent.types.Permission
 
 class RequestOperation internal constructor(
-    private val permissions: Array<out String>,
+    private val permissions: Array<out Permission>,
     private val activity: Activity,
     internal var onFinishedCallback: OnRequestOperationFinishedCallback? = null
 ) {
@@ -14,8 +15,12 @@ class RequestOperation internal constructor(
     }
 
     internal fun start() {
+        val stringPermissions = this.permissions
+            .map { it.identifier }
+            .toTypedArray()
+
         this.activity.requestPermissions(
-            this.permissions,
+            stringPermissions,
             REQUEST_CODE
         )
     }
