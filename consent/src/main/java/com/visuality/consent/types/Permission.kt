@@ -42,6 +42,7 @@ enum class Permission(
     BIND_AUTOFILL_SERVICE(Manifest.permission.BIND_AUTOFILL_SERVICE),
 
     @Deprecated(message = "", level = DeprecationLevel.WARNING)
+    @Suppress("DEPRECATION")
     BIND_CARRIER_MESSAGING_SERVICE(Manifest.permission.BIND_CARRIER_MESSAGING_SERVICE),
 
     BIND_CARRIER_SERVICES(Manifest.permission.BIND_CARRIER_SERVICES),
@@ -159,6 +160,7 @@ enum class Permission(
     GET_PACKAGE_SIZE(Manifest.permission.GET_PACKAGE_SIZE),
 
     @Deprecated(message = "", level = DeprecationLevel.WARNING)
+    @Suppress("DEPRECATION")
     GET_TASKS(Manifest.permission.GET_TASKS),
 
     GLOBAL_SEARCH(Manifest.permission.GLOBAL_SEARCH),
@@ -203,6 +205,7 @@ enum class Permission(
     PACKAGE_USAGE_STATS(Manifest.permission.PACKAGE_USAGE_STATS),
 
     @Deprecated(message = "", level = DeprecationLevel.WARNING)
+    @Suppress("DEPRECATION")
     PERSISTENT_ACTIVITY(Manifest.permission.PERSISTENT_ACTIVITY),
 
     PROCESS_OUTGOING_CALLS(Manifest.permission.PROCESS_OUTGOING_CALLS),
@@ -218,6 +221,7 @@ enum class Permission(
     READ_FRAME_BUFFER(Manifest.permission.READ_FRAME_BUFFER),
 
     @Deprecated(message = "", level = DeprecationLevel.WARNING)
+    @Suppress("DEPRECATION")
     READ_INPUT_STATE(Manifest.permission.READ_INPUT_STATE),
 
     READ_LOGS(Manifest.permission.READ_LOGS),
@@ -263,6 +267,7 @@ enum class Permission(
     REQUEST_INSTALL_PACKAGES(Manifest.permission.REQUEST_INSTALL_PACKAGES),
 
     @Deprecated(message = "", level = DeprecationLevel.WARNING)
+    @Suppress("DEPRECATION")
     RESTART_PACKAGES(Manifest.permission.RESTART_PACKAGES),
 
     SEND_RESPOND_VIA_MESSAGE(Manifest.permission.SEND_RESPOND_VIA_MESSAGE),
@@ -278,6 +283,7 @@ enum class Permission(
     SET_DEBUG_APP(Manifest.permission.SET_DEBUG_APP),
 
     @Deprecated(message = "", level = DeprecationLevel.WARNING)
+    @Suppress("DEPRECATION")
     SET_PREFERRED_APPLICATIONS(Manifest.permission.SET_PREFERRED_APPLICATIONS),
 
     SET_PROCESS_LIMIT(Manifest.permission.SET_PROCESS_LIMIT),
@@ -306,6 +312,7 @@ enum class Permission(
     USE_BIOMETRIC(Manifest.permission.USE_BIOMETRIC),
 
     @Deprecated(message = "", level = DeprecationLevel.WARNING)
+    @Suppress("DEPRECATION")
     USE_FINGERPRINT(Manifest.permission.USE_FINGERPRINT),
 
     USE_SIP(Manifest.permission.USE_SIP),
