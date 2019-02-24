@@ -1,7 +1,9 @@
 package com.visuality.consent.bridge
 
 import android.app.Activity
+import android.content.Context
 import android.content.pm.PackageManager
+import com.visuality.consent.check.CheckOperation
 import com.visuality.consent.request.RequestHolder
 import com.visuality.consent.request.RequestOperation
 import com.visuality.consent.request.RequestResult
@@ -38,6 +40,39 @@ fun Activity.getConsent(
     }
     RequestHolder.currentRequestOperation = requestOperation
     return requestOperation
+}
+
+fun Activity.runWithConsent(
+    vararg permissions: String,
+    block: () -> Unit
+) {
+    val operation = CheckOperation(
+        permissions,
+        this
+    ) {
+        if (!it.hasBlocked) {
+            block()
+        }
+    }
+    operation.start()
+}
+
+fun Activity.runWithConsent(
+    vararg permissions: Permission,
+    block: () -> Unit
+) {
+    val stringPermissions = permissions
+        .map { it.identifier }
+        .toTypedArray()
+    val operation = CheckOperation(
+        stringPermissions,
+        this
+    ) {
+        if (!it.hasBlocked) {
+            block()
+        }
+    }
+    operation.start()
 }
 
 fun Activity.handleConsent(

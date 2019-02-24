@@ -30,38 +30,3 @@ fun Context.checkConsent(
         operation.start()
     }
 }
-
-fun Context.runWithConsent(
-    vararg permissions: String,
-    block: () -> Unit
-) {
-    val operation = CheckOperation(
-        permissions,
-        this
-    ) {
-        if (!it.hasBlocked) {
-            block()
-        }
-    }
-
-    operation.start()
-}
-
-fun Context.runWithConsent(
-    vararg permissions: Permission,
-    block: () -> Unit
-) {
-    val stringPermissions = permissions
-        .map { it.identifier }
-        .toTypedArray()
-    val operation = CheckOperation(
-        stringPermissions,
-        this
-    ) {
-        if (!it.hasBlocked) {
-            block()
-        }
-    }
-
-    operation.start()
-}
