@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         this.setContentView(R.layout.activity_main)
         this.prepareCheckPermissionsButton()
         this.prepareRequestPermissionsButton()
+        this.prepareRunWithPermissionsButton()
     }
 
     override fun onRequestPermissionsResult(
