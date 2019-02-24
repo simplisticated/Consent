@@ -1,6 +1,7 @@
 package com.visuality.consent.request
 
 import android.app.Activity
+import com.visuality.consent.app.Configuration
 import com.visuality.consent.types.Permission
 
 class RequestOperation internal constructor(
@@ -17,11 +18,7 @@ class RequestOperation internal constructor(
     internal fun start() {
         this.activity.requestPermissions(
             permissions,
-            REQUEST_CODE
+            Configuration.PERMISSION_REQUEST_CODE
         )
-    }
-
-    internal companion object {
-        internal const val REQUEST_CODE = Int.MAX_VALUE
     }
 }

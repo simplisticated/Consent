@@ -2,6 +2,7 @@ package com.visuality.consent.bridge
 
 import android.app.Activity
 import android.content.pm.PackageManager
+import com.visuality.consent.app.Configuration
 import com.visuality.consent.request.RequestHolder
 import com.visuality.consent.request.RequestOperation
 import com.visuality.consent.request.RequestResult
@@ -82,7 +83,7 @@ fun Activity.handleConsent(
     permissions: Array<out String>,
     results: IntArray
 ): Boolean {
-    if (requestCode != RequestOperation.REQUEST_CODE) {
+    if (requestCode != Configuration.PERMISSION_REQUEST_CODE) {
         return false
     }
 
