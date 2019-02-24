@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.visuality.consent.bridge.checkConsent
 import com.visuality.consent.bridge.getConsent
 import com.visuality.consent.bridge.handleConsent
+import com.visuality.consent.bridge.runWithConsent
 import com.visuality.consent.types.Permission
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +18,10 @@ class MainActivity : AppCompatActivity() {
 
     private val requestPermissionsButton by lazy {
         this.findViewById<Button>(R.id.request_permissions_button)
+    }
+
+    private val runWithPermissionsButton by lazy {
+        this.findViewById<Button>(R.id.run_with_permissions_button)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,6 +70,21 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(
                     this,
                     text,
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+    }
+
+    private fun prepareRunWithPermissionsButton() {
+        this.runWithPermissionsButton.setOnClickListener {
+            this.runWithConsent(
+                Permission.CAMERA,
+                Permission.WRITE_EXTERNAL_STORAGE
+            ) {
+                Toast.makeText(
+                    this,
+                    "All permissions are available",
                     Toast.LENGTH_LONG
                 ).show()
             }
