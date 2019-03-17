@@ -26,7 +26,9 @@ Add `jitpack.io` repository to your project:
 allprojects {
     repositories {
         jcenter()
-        maven { url "https://jitpack.io" }
+        maven {
+	    url "https://jitpack.io"
+	}
     }
 }
 ```
